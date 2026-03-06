@@ -3,14 +3,22 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Header } from './core/header/header';
+import { Footer } from './core/footer/footer';
+import { ListSuggestion } from './core/list-suggestion/list-suggestion';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Header,
+    Footer,
+    ListSuggestion
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
