@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Suggestion } from '../../models/suggestion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-suggestion',
@@ -49,6 +50,7 @@ export class ListSuggestion {
 
   favoriteSuggestions: Suggestion[] = [];
   searchTerm: string = '';
+  router: any;
 
   likeSuggestion(suggestion: Suggestion) {
     suggestion.nbLikes++;
@@ -70,4 +72,5 @@ export class ListSuggestion {
       s.category.toLowerCase().includes(lowerSearch)
     );
   }
+
 }

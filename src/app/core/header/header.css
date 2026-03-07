@@ -1,36 +1,80 @@
 .header {
-  background: #2c3e50;
-  padding: 1rem 10%;
+  background: rgba(15, 23, 42, 0.95); /* Deep slate-900 with slight transparency */
+  padding: 1rem 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #D97706; /* Golden accent line */
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
   color: #ffffff;
+  letter-spacing: -0.025em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+  color: #D97706;
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-nav a {
+.nav-link {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  color: #94a3b8; /* Slate-400 */
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.nav-link:hover {
   color: #ffffff;
 }
 
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #D97706;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
 .sugg {
-  background: #007bff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.3rem;
-  transition: background 0.2s;
+  background: #D97706; /* Golden/Amber-600 */
+  color: #ffffff !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sugg:hover {
-  background: #0056b3;
+  background: #b45a05; /* Darker amber */
+  transform: translateY(-1px);
 }
+
+.sugg:active {
+  transform: translateY(0);
+}
+

@@ -32,6 +32,11 @@
         <button class="btn btn-fav" (click)="addToFavorites(s)">
           Ajouter aux favoris
         </button>
+        <a [routerLink]="['/details', s.id]" style="text-decoration: none;">
+        <button class="btn btn-details">
+          Détails >
+        </button>
+        </a>
       </footer>
     </article>
   </div>

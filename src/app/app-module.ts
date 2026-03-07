@@ -7,13 +7,19 @@ import { Header } from './core/header/header';
 import { Footer } from './core/footer/footer';
 import { ListSuggestion } from './core/list-suggestion/list-suggestion';
 import { FormsModule } from '@angular/forms';
+import { Home } from './core/home/home';
+import { Notfound } from './core/notfound/notfound';
+import { Details } from './core/details/details';
 
 @NgModule({
   declarations: [
     App,
     Header,
     Footer,
-    ListSuggestion
+    ListSuggestion,
+    Home,
+    Notfound,
+    Details
   ],
   imports: [
     BrowserModule,
