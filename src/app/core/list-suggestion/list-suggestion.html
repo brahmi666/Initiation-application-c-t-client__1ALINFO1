@@ -2,12 +2,16 @@
 
   <header class="search-section">
     <h1 class="title-main">Liste des suggestions</h1>
-    <input 
-      type="text" 
-      class="search-input" 
-      placeholder="Rechercher une suggestion" 
-      [(ngModel)]="searchTerm"
-    >
+    <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
+      <input 
+        type="text" 
+        class="search-input" 
+        style="max-width: 400px;" 
+        placeholder="Rechercher une suggestion" 
+        [(ngModel)]="searchTerm"
+      >
+      <a routerLink="ajouter" class="btn btn-add" style="text-decoration: none; white-space: nowrap;">+ Ajouter Suggestion</a>
+    </div>
   </header>
   <div class="suggestions-list">
     <article *ngFor="let s of filteredSuggestions" class="suggestion-card">
@@ -32,7 +36,7 @@
         <button class="btn btn-fav" (click)="addToFavorites(s)">
           Ajouter aux favoris
         </button>
-        <a [routerLink]="['/details', s.id]" style="text-decoration: none;">
+        <a [routerLink]="['detail', s.id]" style="text-decoration: none;">
         <button class="btn btn-details">
           Détails >
         </button>

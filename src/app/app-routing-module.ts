@@ -6,16 +6,19 @@ import { Notfound } from './core/notfound/notfound';
 import { Details } from './core/details/details';
 
 const routes: Routes = [
-  {path:'', redirectTo:'home', pathMatch:'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: Home },
-  { path: 'list-suggestion', component: ListSuggestion },
-  { path: 'details/:id', component: Details  },
-  { path: '**', component: Notfound },
+  {
+    path: 'list-suggestion',
+    loadChildren: () =>
+      import('./suggestion/suggestion-module').then((m) => m.SuggestionModule),
+  },
 
+  { path: '**', component: Notfound },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

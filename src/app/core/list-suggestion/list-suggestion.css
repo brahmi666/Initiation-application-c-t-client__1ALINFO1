@@ -159,3 +159,11 @@
   background: #218838;
 }
 
+.btn-add {
+  background: #6f42c1;
+  color: white;
+}
+
+.btn-add:hover {
+  background: #5a32a3;
+}
