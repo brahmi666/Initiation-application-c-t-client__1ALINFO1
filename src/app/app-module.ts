@@ -9,6 +9,8 @@ import { Home } from './core/home/home';
 import { Notfound } from './core/notfound/notfound';
 import { SuggestionModule } from './suggestion/suggestion-module';
 import { UserModule } from './user/user-module';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,15 @@ import { UserModule } from './user/user-module';
     BrowserModule,
     AppRoutingModule,
     SuggestionModule,
-    UserModule
+    UserModule,
+    ReactiveFormsModule,
+  
+    //HttpClientModule
+
+    
   ],
   providers: [
+    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay())

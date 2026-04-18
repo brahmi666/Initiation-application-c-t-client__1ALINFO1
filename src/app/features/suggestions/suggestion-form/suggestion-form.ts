@@ -6,7 +6,6 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SuggestionDataService } from '../../../services/suggestion-data.service';
 
 @Component({
   selector: 'app-suggestion-form',
@@ -32,7 +31,6 @@ export class SuggestionFormComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly suggestionData: SuggestionDataService,
     private readonly router: Router,
     private readonly route: ActivatedRoute
   ) {}
@@ -77,15 +75,6 @@ export class SuggestionFormComponent implements OnInit {
       description: string;
       categorie: string;
     };
-    this.suggestionData.addSuggestion({
-      title: v.titre.trim(),
-      description: v.description.trim(),
-      category: v.categorie,
-      date: new Date(),
-      status: 'en_attente',
-      nbLikes: 0
-    });
-    void this.router.navigate(['..'], { relativeTo: this.route });
   }
 
   titreErrors(): ValidationErrors | null | undefined {
