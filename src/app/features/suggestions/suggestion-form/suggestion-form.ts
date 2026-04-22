@@ -6,6 +6,8 @@ import {
   Validators
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SuggestionService } from '../../../services/suggestion.service';
+import { Suggestion } from '../../../models/suggestion';
 
 @Component({
   selector: 'app-suggestion-form',
@@ -32,7 +34,8 @@ export class SuggestionFormComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly router: Router,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly suggestionService: SuggestionService
   ) {}
 
   ngOnInit(): void {
@@ -70,11 +73,23 @@ export class SuggestionFormComponent implements OnInit {
       this.suggestionForm.markAllAsTouched();
       return;
     }
-    const v = this.suggestionForm.getRawValue() as {
-      titre: string;
-      description: string;
-      categorie: string;
-    };
+    const v = this.suggestionForm.getRawValue();
+    const newSugg = new Suggestion();
+    newSugg.title = v.titre;
+    newSugg.description = v.description;
+    newSugg.category = v.categorie;
+    newSugg.date = new Date();
+    newSugg.status = v.status;
+    newSugg.nbLikes = 0;
+
+    this.suggestionService.addSuggestion(newSugg).subscribe({
+      next: () => {
+        this.router.navigate(['..'], { relativeTo: this.route });
+      },
+      error: (err) => {
+        console.error('erreur lors de l\'ajout',err);
+      }
+    });
   }
 
   titreErrors(): ValidationErrors | null | undefined {

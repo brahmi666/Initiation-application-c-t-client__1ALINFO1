@@ -1,0 +1,92 @@
+.details-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.details-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.details-header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1.5rem;
+}
+
+.details-title {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+.details-meta {
+  display: flex;
+  gap: 1.5rem;
+  color: #666;
+}
+
+.category {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.details-body h3 {
+  color: #444;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.details-body p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.details-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes-count {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+.btn-back {
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background: #e2e6ea;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-acceptee { background: #d4edda; color: #155724; }
+.status-refusee { background: #f8dbdb; color: #721c24; }
+.status-en_attente { background: #fff3cd; color: #856404; }

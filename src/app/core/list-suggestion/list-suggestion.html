@@ -14,35 +14,29 @@
     </div>
   </header>
   <div class="suggestions-list">
-    <article *ngFor="let s of filteredSuggestions" class="suggestion-card">
+    <div *ngFor="let suggestion of suggestions" class="suggestion-card">
       <div class="suggestion-header">
-        <h2 class="suggestion-title">{{ s.title }}</h2>
+        <h3 class="suggestion-title">{{ suggestion.title }}</h3>
         <div class="category-info">
-          <span class="category">{{ s.category }}</span>
-          <span class="date">{{ s.date | date:'dd MMM yyyy' }}</span>
+          <span class="category">{{ suggestion.category }}</span>
         </div>
       </div>
       
-      <p class="suggestion-desc">{{ s.description }}</p>
+      <p class="suggestion-desc">{{ suggestion.description }}</p>
 
-      <div class="status-badge" [ngClass]="'status-' + s.status">
-        {{ s.status.replace('_', ' ') }}
+      <div class="status-badge" [ngClass]="'status-' + (suggestion.status || 'en_attente').replace(' ', '_')">
+        {{ suggestion.status }}
       </div>
       
-      <footer class="actions" *ngIf="s.status !== 'refusee'">
-        <button class="btn btn-like" (click)="likeSuggestion(s)">
-          Like {{ s.nbLikes }}
-        </button>
-        <button class="btn btn-fav" (click)="addToFavorites(s)">
-          Ajouter aux favoris
-        </button>
-        <a [routerLink]="['detail', s.id]" style="text-decoration: none;">
-        <button class="btn btn-details">
-          Détails >
-        </button>
+      <footer class="actions">
+        <span style="font-weight: 600; flex-grow: 1; align-self: center;">❤️ {{ suggestion.nbLikes }} Likes</span>
+        
+        <!-- Link to the details page -->
+        <a [routerLink]="['detail', suggestion.id]" style="text-decoration: none;">
+          <button class="btn btn-details">Voir les détails ></button>
         </a>
       </footer>
-    </article>
+    </div>
   </div>
 
   <section class="favorites-section" *ngIf="favoriteSuggestions.length > 0">
