@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SuggestionService } from '../../services/suggestion.service';
 import { Suggestion } from '../../models/suggestion';
@@ -11,28 +11,22 @@ import { Suggestion } from '../../models/suggestion';
 })
 export class ListSuggestion implements OnInit {
   suggestions: Suggestion[] = [];
-    favoriteSuggestions: Suggestion[] = [];
-     searchTerm: string = '';
+  favoriteSuggestions: Suggestion[] = [];
+  searchTerm: string = '';
   router: any;
 
-
-  constructor (private SuggestionService:SuggestionService){}
+  constructor(private SuggestionService: SuggestionService) {}
 
   ngOnInit(): void {
-    this.SuggestionService.getAllSuggestions().subscribe(
-      {
-        next:(data:any)=>{
-         
-          this.suggestions = data.suggestions || data;
-        }
-      }
-    )
-    };
-    
+    this.SuggestionService.getAllSuggestions().subscribe(data => {
+      this.suggestions = data;
+    });
+  }
+
   likeSuggestion(suggestion: Suggestion) {
     suggestion.nbLikes++;
   }
-  
+
   addToFavorites(suggestion: Suggestion) {
     if (!this.favoriteSuggestions.includes(suggestion)) {
       this.favoriteSuggestions.push(suggestion);
@@ -44,13 +38,10 @@ export class ListSuggestion implements OnInit {
       return this.suggestions;
     }
     const lowerSearch = this.searchTerm.toLowerCase();
-    return this.suggestions.filter(s => 
-      s.title.toLowerCase().includes(lowerSearch) || 
-      s.category.toLowerCase().includes(lowerSearch)
+    return this.suggestions.filter(
+      (s) =>
+        s.title.toLowerCase().includes(lowerSearch) ||
+        s.category.toLowerCase().includes(lowerSearch),
     );
   }
-  }
-
- 
-
-
+}
